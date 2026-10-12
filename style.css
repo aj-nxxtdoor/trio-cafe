@@ -1,0 +1,204 @@
+/* ---------- Tokens (colours taken from the Trio menu) ---------- */
+:root {
+  --bg: #f6ebe7;        /* pearly blush */
+  --bg-deep: #efd9d4;   /* the pink sheen on the menu */
+  --panel: #fbf5f1;
+  --ink: #2c3040;       /* slate lettering */
+  --muted: #6d6a75;
+  --gold: #9c7a45;      /* gold leaf accents */
+  --line: #dcc3bc;
+  --serif: "Marcellus", Georgia, serif;
+  --sans: "Jost", system-ui, sans-serif;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+body {
+  margin: 0;
+  background: linear-gradient(135deg, var(--bg) 40%, var(--bg-deep)) fixed;
+  color: var(--ink);
+  font: 400 1rem/1.6 var(--sans);
+  animation: pageFade 1s ease both; /* whole page fades in on load */
+}
+@keyframes pageFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+h1, h2 { font-family: var(--serif); font-weight: 400; margin: 0; }
+a { color: inherit; }
+a:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+
+/* ---------- Nav ---------- */
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem clamp(1.2rem, 4vw, 3rem);
+  transition: background .3s, box-shadow .3s;
+}
+.nav.is-scrolled {
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 var(--line);
+}
+.nav__logo { font-family: var(--serif); letter-spacing: .25em; text-decoration: none; }
+.nav nav { display: flex; gap: 1.8rem; }
+.nav nav a { text-decoration: none; position: relative; }
+.nav nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 100%; height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s;
+}
+.nav nav a:hover::after { transform: scaleX(1); }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 1.5rem 4rem;
+}
+
+/* Logo badge: fades in while spinning once */
+.hero__logo {
+  width: clamp(210px, 42vw, 320px);
+  height: auto;
+  opacity: 0;
+  transform-origin: center;
+  animation: logoIn 1.8s cubic-bezier(.2, .7, .2, 1) .2s forwards;
+  filter: drop-shadow(0 12px 30px rgba(156, 122, 69, .18));
+}
+@keyframes logoIn {
+  from { opacity: 0; transform: rotate(-200deg) scale(.6); }
+  to   { opacity: 1; transform: rotate(0) scale(1); }
+}
+
+/* Gold leaves beside the badge */
+.hero__leaf {
+  position: absolute;
+  top: 22%;
+  width: clamp(64px, 14vw, 180px);
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+  animation: leafIn 1.6s ease 1.2s forwards;
+}
+.hero__leaf--left  { left: clamp(.5rem, 5vw, 6rem); }
+.hero__leaf--right { right: clamp(.5rem, 5vw, 6rem); scale: -1 1; }
+@keyframes leafIn { to { opacity: .55; } }
+
+.hero__sub, .hero__tag, .hero .btn {
+  opacity: 0;
+  animation: fade 1s ease forwards;
+}
+.hero__sub {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  letter-spacing: .3em;
+  margin: 1.8rem 0 .5rem;
+  padding-left: .3em;
+  animation-delay: 1.5s;
+}
+.hero__tag { color: var(--muted); font-style: italic; margin: 0; animation-delay: 1.7s; }
+.btn {
+  display: inline-block;
+  margin-top: 2.2rem;
+  padding: .8rem 2rem;
+  border: 1px solid var(--gold);
+  text-decoration: none;
+  transition: background .3s, color .3s;
+  animation-delay: 1.9s;
+}
+.btn:hover { background: var(--gold); color: var(--panel); }
+
+@keyframes fade { to { opacity: 1; } }
+
+/* ---------- Menu ---------- */
+.menu {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 3rem clamp(1.2rem, 4vw, 2rem);
+  display: grid;
+  gap: 3.5rem 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}
+.group h2 { font-size: 1.6rem; letter-spacing: .12em; color: var(--gold); margin-bottom: 1rem; }
+.group ul { list-style: none; margin: 0; padding: 0; }
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: .7rem 0;
+}
+.item img {
+  width: 88px;
+  height: 88px;
+  flex: none;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  transition: transform .4s cubic-bezier(.2, .7, .2, 1);
+}
+.item:hover img { transform: scale(1.12) rotate(-3deg); }
+.item__name { flex: 0 1 auto; }
+.item::after {
+  content: "";
+  order: 1;
+  flex: 1;
+  min-width: 1rem;
+  border-bottom: 2px dotted var(--line);
+}
+.item__price { order: 2; font-variant-numeric: tabular-nums; font-weight: 500; }
+.menu__note { grid-column: 1 / -1; color: var(--muted); font-size: .9rem; margin: 0; }
+
+/* ---------- Visit ---------- */
+.visit { text-align: center; padding: 4rem 1.5rem 5rem; }
+.visit h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+.visit p { margin: .3rem 0; color: var(--muted); }
+.social { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-top: 1.5rem; }
+.social a { text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+
+.footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--muted);
+  font-style: italic;
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- Scroll reveal (script.js adds .is-visible) ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (scripting: none) { .reveal { opacity: 1; transform: none; } }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 480px) {
+  .item img { width: 72px; height: 72px; }
+  .hero__leaf { top: 12%; }
+}
+
+/* ---------- Respect reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; transition-duration: .01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}

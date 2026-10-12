@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trio Café | Amani Court</title>
+  <meta name="description" content="Trio Café at Amani Court. Iced coffee, karak, mojitos and mini pancakes. Open 10:00am to 11:00pm.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Reusable gold leaf branch (drawn once, used twice in the hero) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <path id="leaf" d="M0 0 C8 -10 20 -12 28 -8 C20 2 8 6 0 0Z"/>
+    </defs>
+    <symbol id="branch" viewBox="0 0 120 160">
+      <g fill="none" stroke="#9c7a45" stroke-width="1" stroke-linecap="round">
+        <path d="M10 150 C40 110 60 70 100 10"/>
+        <use href="#leaf" transform="translate(22 130) rotate(-30)"/>
+        <use href="#leaf" transform="translate(30 118) rotate(-150)"/>
+        <use href="#leaf" transform="translate(40 102) rotate(-30)"/>
+        <use href="#leaf" transform="translate(50 88) rotate(-150)"/>
+        <use href="#leaf" transform="translate(60 72) rotate(-30)"/>
+        <use href="#leaf" transform="translate(72 54) rotate(-150)"/>
+        <use href="#leaf" transform="translate(84 36) rotate(-30)"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#top">TRIO</a>
+    <nav>
+      <a href="#menu">Menu</a>
+      <a href="#visit">Visit</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="top">
+
+    <svg class="hero__leaf hero__leaf--left" aria-hidden="true" viewBox="0 0 120 160">
+      <use href="#branch"/>
+    </svg>
+    <svg class="hero__leaf hero__leaf--right" aria-hidden="true" viewBox="0 0 120 160">
+      <use href="#branch"/>
+    </svg>
+
+    <!-- Trio logo badge, drawn in code so it stays sharp on any screen -->
+    <svg class="hero__logo" role="img" aria-label="Trio" viewBox="0 0 300 300" width="300" height="300">
+      <defs>
+        <linearGradient id="wash" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#fbf5f1"/>
+          <stop offset="1" stop-color="#f1dfd9"/>
+        </linearGradient>
+        <clipPath id="badge"><circle cx="150" cy="150" r="140"/></clipPath>
+      </defs>
+      <circle cx="150" cy="150" r="140" fill="url(#wash)"/>
+      <g clip-path="url(#badge)">
+        <path d="M0 175 C60 125 115 205 175 165 S262 135 300 155 L300 300 L0 300Z" fill="#d9c3a8" opacity=".55"/>
+        <path d="M0 205 C70 175 125 245 195 210 S272 185 300 200 L300 300 L0 300Z" fill="#c9ab86" opacity=".5"/>
+      </g>
+      <circle cx="150" cy="150" r="140" fill="none" stroke="#9c7a45" stroke-width="1.5"/>
+      <text x="150" y="168" text-anchor="middle" font-family="Marcellus, Georgia, serif" font-size="78" letter-spacing="2" fill="#2c3040">TRIO</text>
+      <circle cx="224" cy="186" r="2.4" fill="#2c3040"/>
+      <circle cx="233" cy="186" r="2.4" fill="#2c3040"/>
+      <circle cx="242" cy="186" r="2.4" fill="#2c3040"/>
+    </svg>
+
+    <p class="hero__sub">TRIO CAFÉ</p>
+    <p class="hero__tag">Made with love, shared with joy.</p>
+    <a class="btn" href="#menu">See the menu</a>
+  </section>
+
+  <main id="menu" class="menu">
+
+    <section class="group">
+      <h2 class="reveal">Drinks</h2>
+      <ul>
+        <li class="item reveal">
+          <img src="images/mojito.jpg" alt="Passion Mojito" loading="lazy">
+          <div class="item__body">
+            <h3 class="item__name">Passion Mojito</h3>
+            <p class="item__desc">Refreshing passion fruit and lime mojito with fresh mint, sparkling soda, and crushed ice, garnished with passion fruit.</p>
+            <span class="item__price">Ksh 500</span>
+          </div>
+        </li>
+        <li class="item reveal">
+          <img src="images/minha.jpg" alt="Minha Bliss" loading="lazy">
+          <div class="item__body">
+            <h3 class="item__name">Minha Bliss</h3>
+            <p class="item__desc">Smooth and refreshing blend of tropical flavors, creating a fruity, vibrant drink with a naturally sweet finish.</p>
+            <span class="item__price">Ksh 600</span>
+          </div>
+        </li>
+        <li class="item reveal">
+          <img src="images/tropical.jpg" alt="Tropical Splash" loading="lazy">
+          <div class="item__body">
+            <h3 class="item__name">Tropical Splash</h3>
+            <p class="item__desc">Refreshing tropical blend of passion fruit, pineapple, and citrus, served chilled for a bright and fruity finish.</p>
+            <span class="item__price">Ksh 500</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="group">
+      <h2 class="reveal">Iced coffee &amp; karak</h2>
+      <ul>
+        <li class="item reveal">
+          <img src="images/karak.jpg" alt="Iced Karak" loading="lazy">
+          <div class="item__body">
+            <h3 class="item__name">Iced Karak</h3>
+            <p class="item__desc">Chilled spiced karak tea brewed with rich black tea, creamy milk, cardamom, and aromatic spices, lightly sweetened and served over ice.</p>
+            <span class="item__price">Ksh 600</span>
+          </div>
+        </li>
+        <li class="item reveal">
+          <img src="images/vanilla.jpg" alt="Iced Coffee Vanilla Latte" loading="lazy">
+          <div class="item__body">
+            <h3 class="item__name">Iced Coffee Vanilla Latte</h3>
+            <p class="item__desc">Smooth espresso blended with creamy milk and sweet vanilla, creating a rich and velvety latte.</p>
+            <span class="item__price">Ksh 500</span>
+          </div>
+        </li>
+        <li class="item reveal">
+          <img src="images/caramel.jpg" alt="Iced Coffee Caramel Latte" loading="lazy">
+          <div class="item__body">
+            <h3 class="item__name">Iced Coffee Caramel Latte</h3>
+            <p class="item__desc">Smooth iced coffee with creamy milk and sweet caramel, served chilled over ice for a rich and indulgent finish.</p>
+            <span class="item__price">Ksh 500</span>
+          </div>
+        </li>
+        <li class="item reveal">
+          <img src="images/tea.jpg" alt="Karak Tea" loading="lazy">
+          <div class="item__body">
+            <h3 class="item__name">Karak Tea</h3>
+            <p class="item__desc">Rich black tea simmered with creamy milk, cardamom, and warm spices, lightly sweetened for a comforting finish.</p>
+            <span class="item__price">Ksh 250</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="group">
+      <h2 class="reveal">Bites</h2>
+      <ul>
+        <li class="item reveal">
+          <img src="images/wings.jpg" alt="Chicken Wings" loading="lazy">
+          <div class="item__body">
+            <h3 class="item__name">Chicken Wings</h3>
+            <p class="item__desc">Juicy and crispy chicken wings seasoned with flavorful spices, served hot with a delicious dipping sauce.</p>
+            <span class="item__price">Ksh 550</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="group">
+      <h2 class="reveal">Pancakes</h2>
+      <ul>
+        <li class="item reveal">
+          <img src="images/biscoff.jpg" alt="Biscoff Mini Pancakes" loading="lazy">
+          <div class="item__body">
+            <h3 class="item__name">Biscoff Mini Pancakes</h3>
+            <p class="item__desc">Fluffy mini pancakes drizzled with creamy Biscoff spread, topped with crushed Biscoff biscuits for a rich and indulgent finish.</p>
+            <span class="item__price">Ksh 400</span>
+          </div>
+        </li>
+        <li class="item reveal">
+          <img src="images/nutella.jpg" alt="Nutella Mini Pancakes" loading="lazy">
+          <div class="item__body">
+            <h3 class="item__name">Nutella Mini Pancakes</h3>
+            <p class="item__desc">Fluffy mini pancakes drizzled with smooth Nutella, topped with chocolate goodness for a rich and decadent finish.</p>
+            <span class="item__price">Ksh 350</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <section class="visit" id="visit">
+    <h2 class="reveal">Visit us</h2>
+    <p class="reveal">Amani Court</p>
+    <p class="reveal">Open 10:00am to 11:00pm</p>
+    <div class="social reveal">
+      <a href="https://www.instagram.com/Trio.ke" target="_blank" rel="noopener">Instagram @Trio.ke</a>
+      <a href="https://www.tiktok.com/@Trio.ke" target="_blank" rel="noopener">TikTok @Trio.ke</a>
+    </div>
+  </section>
+
+  <footer class="footer">© Trio Café. Made with love, shared with joy.</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
